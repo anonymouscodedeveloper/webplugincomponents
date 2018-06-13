@@ -1,0 +1,82 @@
+ 
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    </head>
+    <body>
+        <div id='printoutPanel'></div>
+        <div id='myMap' style='width: 100%; height: 100%;'></div>
+        <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol'></script>
+        <script type='text/javascript'>
+            function loadMapScenario()
+            {
+                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                    credentials: 'AqoMWdoHV-Mj_cKXjfmJrGHx_Mqjfz-vo5jK_3hRL-dlWnskb1AygcMwHDWMCEQW',
+					center: new Microsoft.Maps.Location(47.616343, -122.203177),
+					zoom: 17,
+					customMapStyle: {
+                        elements: {
+                            area: { fillColor: '#DCDEEE' },
+                            water: { fillColor: '#ADAFDC' },
+                            tollRoad: { fillColor: '#CBC4E2', strokeColor: '#CBC4E2' },
+                            arterialRoad: { fillColor: '#CBC4E2', strokeColor: '#CBC4E2' },
+                            road: { fillColor: '#CBC4E2', strokeColor: '#CBC4E2' },
+                            street: { fillColor: '#CBC4E2', strokeColor: '#CBC4E2' },
+                            transit: { fillColor: '#CBC4E2' }
+                        },
+                        settings: {
+                            landColor: '#DCDEEE',
+							backgroundColor: '#DCDEEE'
+                        }
+                    }
+                });
+				map.setOptions({
+						maxZoom: 19,
+						minZoom: 15,
+						showDashboard: true,
+						showHeadingCompass: false, 
+						showZoomButtons: true,
+						showTrafficButton: false,
+						showScalebar: false,
+						showMapTypeSelector: false,
+						showLocateMeButton: false,
+						liteMode: true,
+						enableClickableLogo: false,
+						disableStreetsideAutoCoverage: true,
+						disableStreetside: true,
+						disableScrollWheelZoom: false,
+						disableMapTypeSelectorMouseOver: true,
+						disableKeyboardInput: true,
+						disableBirdseye: false,
+						allowHidingLabelsOfRoad: true,
+						backgroundColor: '#DCDEEE',
+						showBreadcrumb: true
+				});
+				var pushpin1 = new Microsoft.Maps.Pushpin(map.getCenter(), { 
+					icon: 'http://www.bodytech.com.br/content/arquivos/bt-experts/bt_circle_bt.png',
+					anchor: new Microsoft.Maps.Point(34, 34) 
+				});
+				location1=new Microsoft.Maps.Location(47.616343, -122.203177)
+				pushpin1.setLocation(location1);
+				map.entities.push(pushpin1);
+				var pushpin2 = new Microsoft.Maps.Pushpin(map.getCenter(), { 
+					icon: 'http://www.bodytech.com.br/content/arquivos/bt-experts/bt_circle_bt.png',
+					anchor: new Microsoft.Maps.Point(34, 34) 
+				});
+				location2=new Microsoft.Maps.Location(47.606343, -122.212177)
+				pushpin2.setLocation(location2);
+				map.entities.push(pushpin2);
+				//Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+					//var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+					//directionsManager.setRequestOptions({routeMode: Microsoft.Maps.Directions.RouteMode.walking});
+					//var waypoint1 = new Microsoft.Maps.Directions.Waypoint({address: 'Bellevue Downtown Park, Seattle'});
+					//var waypoint2 = new Microsoft.Maps.Directions.Waypoint({address: 'Bellevue Downtown Park, Seattle'});
+					//directionsManager.addWaypoint(waypoint1);
+					//directionsManager.addWaypoint(waypoint2);
+					//directionsManager.calculateDirections();
+				//});
+            }
+            window.onload = loadMapScenario;
+        </script>
+    </body>
+</html>
